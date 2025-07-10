@@ -1,3 +1,4 @@
+// import { useState } from "react";
 // import { motion } from "framer-motion";
 // import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
@@ -5,6 +6,33 @@
 // const MotionForm = motion.form;
 
 // const Contact = () => {
+//   const [state, setState] = useState({
+//     submitted: false,
+//     error: false,
+//     submitting: false,
+//   });
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     setState({ submitted: false, error: false, submitting: true });
+
+//     const form = e.target;
+//     const formData = new FormData(form);
+
+//     fetch("/", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+//       body: new URLSearchParams(formData).toString(),
+//     })
+//       .then(() => {
+//         setState({ submitted: true, error: false, submitting: false });
+//         form.reset();
+//       })
+//       .catch(() => {
+//         setState({ submitted: false, error: true, submitting: false });
+//       });
+//   };
+
 //   return (
 //     <section id="contact" className="contact-section">
 //       <MotionDiv
@@ -69,8 +97,10 @@
 //             className="contact-form"
 //             name="contact"
 //             method="POST"
+//             netlify
 //             data-netlify="true"
 //             data-netlify-honeypot="bot-field"
+//             onSubmit={handleSubmit}
 //           >
 //             {/* Hidden Netlify form fields */}
 //             <input type="hidden" name="form-name" value="contact" />
@@ -78,11 +108,23 @@
 
 //             <div className="form-group">
 //               <label htmlFor="name">Name</label>
-//               <input type="text" id="name" name="name" required />
+//               <input
+//                 type="text"
+//                 id="name"
+//                 name="name"
+//                 required
+//                 disabled={state.submitting}
+//               />
 //             </div>
 //             <div className="form-group">
 //               <label htmlFor="email">Email</label>
-//               <input type="email" id="email" name="email" required />
+//               <input
+//                 type="email"
+//                 id="email"
+//                 name="email"
+//                 required
+//                 disabled={state.submitting}
+//               />
 //             </div>
 //             <div className="form-group">
 //               <label htmlFor="message">Message</label>
@@ -91,10 +133,27 @@
 //                 name="message"
 //                 rows="5"
 //                 required
+//                 disabled={state.submitting}
 //               ></textarea>
 //             </div>
-//             <button type="submit" className="submit-btn">
-//               Send Message
+
+//             {state.submitted && (
+//               <div className="form-success">
+//                 Thank you! Your message has been sent successfully.
+//               </div>
+//             )}
+//             {state.error && (
+//               <div className="form-error">
+//                 Oops! Something went wrong. Please try again.
+//               </div>
+//             )}
+
+//             <button
+//               type="submit"
+//               className="submit-btn"
+//               disabled={state.submitting}
+//             >
+//               {state.submitting ? "Sending..." : "Send Message"}
 //             </button>
 //           </MotionForm>
 //         </div>
@@ -108,23 +167,24 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const MotionDiv = motion.div;
 const MotionForm = motion.form;
 
 const Contact = () => {
   const [state, setState] = useState({
-    submitted: false,
-    error: false,
     submitting: false,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setState({ submitted: false, error: false, submitting: true });
+    setState({ submitting: true });
 
     const form = e.target;
     const formData = new FormData(form);
+
+    const toastId = toast.loading("Sending your message...");
 
     fetch("/", {
       method: "POST",
@@ -132,11 +192,16 @@ const Contact = () => {
       body: new URLSearchParams(formData).toString(),
     })
       .then(() => {
-        setState({ submitted: true, error: false, submitting: false });
+        toast.success("Message sent successfully!", { id: toastId });
         form.reset();
       })
       .catch(() => {
-        setState({ submitted: false, error: true, submitting: false });
+        toast.error("Failed to send message. Please try again.", {
+          id: toastId,
+        });
+      })
+      .finally(() => {
+        setState({ submitting: false });
       });
   };
 
@@ -208,7 +273,6 @@ const Contact = () => {
             data-netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
           >
-            {/* Hidden Netlify form fields */}
             <input type="hidden" name="form-name" value="contact" />
             <input type="hidden" name="bot-field" />
 
@@ -242,17 +306,6 @@ const Contact = () => {
                 disabled={state.submitting}
               ></textarea>
             </div>
-
-            {state.submitted && (
-              <div className="form-success">
-                Thank you! Your message has been sent successfully.
-              </div>
-            )}
-            {state.error && (
-              <div className="form-error">
-                Oops! Something went wrong. Please try again.
-              </div>
-            )}
 
             <button
               type="submit"
