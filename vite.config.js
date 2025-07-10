@@ -5,4 +5,13 @@ import eslint from "vite-plugin-eslint";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), eslint()],
+  base: "/",
+  build: {
+    assetsInclude: ["**/*.pdf"],
+  },
+  server: {
+    fs: {
+      strict: false,
+    },
+  },
 });

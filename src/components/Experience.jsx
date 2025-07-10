@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaDownload, FaCertificate } from "react-icons/fa";
+import { FaDownload, FaCertificate, FaExternalLinkAlt } from "react-icons/fa";
 
 const MotionDiv = motion.div;
 const MotionA = motion.a;
@@ -10,39 +10,51 @@ const Experience = () => {
     {
       role: "Frontend Developer Intern",
       company: "CodeAlpha",
-      duration: "Oct 2023 - Present | 1 Month",
+      duration: "June 2025 - Present | 1 Month",
       tasks: [
         "Built responsive portfolio using React + Vite",
         "Implemented animations with Framer Motion",
         "Deployed projects on Vercel",
         "Collaborated in agile development workflows",
       ],
-      certLink: "/codealpha-certificate.pdf", // Replace with actual path
+      certLink: "/certificates/codealpha-certificate.pdf",
     },
     {
       role: "JavaScript Developer Intern",
       company: "COMSATS Software House",
-      duration: "Jun 2023 - Aug 2023 | 3 Months",
+      duration: "June 2024 - Sept 2024 | 3 Months",
       tasks: [
         "Developed web applications using vanilla JavaScript",
         "Fixed UI bugs in legacy systems",
         "Optimized DOM manipulation performance",
         "Participated in code reviews",
       ],
-      certLink: "/comsats-certificate.pdf", // Replace with actual path
+      certLink: "/certificates/code-alpha-lor.pdf",
     },
   ];
 
   const education = {
     degree: "BS (Software Engineering)",
-    institution: "COMSATS University, Sahiwal Campus",
-    year: "2020 - 2024 (Expected)",
+    institution: "CUI Islamabad, Sahiwal Campus",
+    year: "2021 - 2025",
   };
 
   const certificates = [
-    { name: "React - The Complete Guide", source: "Udemy" },
-    { name: "Advanced JavaScript Concepts", source: "Udemy" },
-    { name: "HTML & CSS Mastery", source: "Udemy" },
+    {
+      name: "React - Crash Course",
+      source: "Udemy",
+      link: "https://www.udemy.com/certificate/UC-2f4070d9-37f9-4df9-835d-08aa93de5996/",
+    },
+    {
+      name: "JS - Master Course",
+      source: "Udemy",
+      link: "https://www.udemy.com/certificate/UC-fc96736e-ba73-4002-8fd8-750121af06bc/",
+    },
+    {
+      name: "HTML & CSS Mastery",
+      source: "Udemy",
+      link: "https://www.coursera.org/account/accomplishments/verify/F7E35BEDZ753",
+    },
   ];
 
   return (
@@ -81,10 +93,11 @@ const Experience = () => {
                   <a
                     href={exp.certLink}
                     className="certificate-link"
-                    target="_blank"
+                    target="blank"
                     rel="noopener noreferrer"
                   >
-                    <FaCertificate /> View Certificate
+                    <FaCertificate /> View Certificate{" "}
+                    <FaExternalLinkAlt className="external-icon" />
                   </a>
                 )}
               </MotionDiv>
@@ -123,7 +136,15 @@ const Experience = () => {
               <ul>
                 {certificates.map((cert, index) => (
                   <li key={index}>
-                    <FaCertificate /> {cert.name} <span>({cert.source})</span>
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="certificate-link"
+                    >
+                      <FaCertificate /> {cert.name} <span>({cert.source})</span>
+                      <FaExternalLinkAlt className="external-icon-small" />
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -133,11 +154,12 @@ const Experience = () => {
 
         {/* Download Button */}
         <MotionA
-          href="/your-resume.pdf" // Replace with actual path
-          download="M_Ahmad_Resume.pdf"
+          href="/resume/ahmad-resume.pdf"
+          download="ahmad-resume.pdf"
           className="download-btn"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => console.log("download initiated")}
         >
           <FaDownload /> Download Full Resume
         </MotionA>
