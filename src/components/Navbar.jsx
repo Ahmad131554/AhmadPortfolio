@@ -32,6 +32,11 @@ const Navbar = () => {
             </a>
           </li>
           <li>
+            <a href="#experience" className="nav-link">
+              Experience
+            </a>
+          </li>
+          <li>
             <a href="#projects" className="nav-link">
               Projects
             </a>
