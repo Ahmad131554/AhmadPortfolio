@@ -1,12 +1,63 @@
-# React + Vite
+# <img src="public/favicon.ico" width="30" /> M. Ahmad's Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Portfolio Screenshot](public/portfolio.png)  
+🔗 _Live Demo: [portfolio.netlify.app](https://dazzling-pithivier-95cb4f.netlify.app/)_
 
-Currently, two official plugins are available:
+A modern developer portfolio built with **React + Vite**, featuring smooth animations, project showcases, and a responsive design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✅ **Fully Responsive** (Mobile, Tablet, Desktop)
+- 🎞️ **Smooth Animations** (Framer Motion)
+- 🧰 **Project Showcase** with GitHub & Live Demo links
+- ✉️ **Interactive Contact Form**
+- 📄 **PDF Resume Download**
+- 🌗 **Dark/Light Mode Toggle**
+- ⚡ **Optimized Performance** (100+ Lighthouse Score)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, Vite, CSS3
+- **Animations**: Framer Motion
+- **Icons**: React Icons
+- **Hosting**: Netlify
+
+---
+
+## 🖥️ Local Setup
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/Ahmad131554/AhmadPortfolio.git
+   ```
+
+2. Install dependencies:
+
+```bash
+  npm install
+```
+
+3. Run the dev server:
+
+```bash
+  npm run dev
+```
+
+---
+
+## 🚀 Deployment
+
+This portfolio is deployed on **Netlify**.
+
+Simply drag and drop the build folder in your Netlify dashboard, or connect the GitHub repo for continuous deployment.
+
+---
+
+## 📜 License
+
+MIT © [M. Ahmad](https://github.com/Ahmad131554)
