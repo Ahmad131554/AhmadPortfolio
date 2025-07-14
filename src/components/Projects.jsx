@@ -77,7 +77,7 @@ const Projects = () => {
         viewport={{ once: true, margin: "-100px" }}
       >
         <h2 className="section-heading">
-          <span className="section-number">02.</span> My Projects
+          <span className="section-number">03.</span> My Projects
         </h2>
 
         <div className="projects-grid">

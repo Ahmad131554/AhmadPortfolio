@@ -5,7 +5,6 @@ const MotionDiv = motion.div;
 const MotionA = motion.a;
 
 const Experience = () => {
-  // Your data
   const experience = [
     {
       role: "Frontend Developer Intern",
@@ -66,7 +65,7 @@ const Experience = () => {
         viewport={{ once: true }}
       >
         <h2 className="section-heading">
-          <span className="section-number">03.</span> Experience & Education
+          <span className="section-number">02.</span> Experience & Education
         </h2>
 
         <div className="resume-container">
